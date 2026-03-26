@@ -1,0 +1,373 @@
+/* ============================================================
+   KepinganBarang — Shopee Affiliate Catalog
+   Theme: Dark Elegance × Deep Purple
+   Font: Syne (headings) + DM Sans (body)
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --bg:          #0e0e12;
+  --surface:     #1a1a22;
+  --surface-2:   #22222e;
+  --purple:      #6A0DAD;
+  --purple-light:#8B2FD8;
+  --purple-glow: rgba(106, 13, 173, 0.35);
+  --purple-dim:  rgba(106, 13, 173, 0.15);
+  --text:        #f0eeff;
+  --text-muted:  #8a8aaa;
+  --border:      rgba(255, 255, 255, 0.07);
+  --radius:      14px;
+  --radius-sm:   8px;
+  --transition:  0.28s ease-in-out;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  /* subtle noise texture overlay */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(106,13,173,0.18) 0%, transparent 60%);
+}
+
+img { display: block; width: 100%; object-fit: cover; }
+a  { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ── Profile Header ── */
+.profile-header {
+  position: relative;
+  text-align: center;
+  padding: 60px 24px 40px;
+  overflow: hidden;
+}
+
+.profile-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 0%, var(--purple-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.profile-avatar-wrap {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--purple), var(--purple-light), #c084fc, var(--purple));
+  animation: spin-border 5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spin-border {
+  to { transform: rotate(360deg); }
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  border: 3px solid var(--bg);
+}
+
+.profile-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.profile-name span {
+  color: var(--purple-light);
+}
+
+.profile-bio {
+  max-width: 380px;
+  margin: 0 auto 28px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.profile-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 10px 28px;
+  gap: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+
+/* ── Category Navigation ── */
+.category-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14, 14, 18, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+}
+
+.category-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 14px 0;
+  scrollbar-width: none;
+}
+.category-track::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+  flex-shrink: 0;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.cat-btn:hover {
+  color: var(--text);
+  border-color: var(--purple);
+  background: var(--purple-dim);
+}
+
+.cat-btn.active {
+  color: #fff;
+  background: var(--purple);
+  border-color: var(--purple);
+  box-shadow: 0 0 18px var(--purple-glow);
+}
+
+/* ── Product Section ── */
+.product-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.result-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Product Grid ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+@media (min-width: 960px) {
+  .product-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+}
+
+/* ── Product Card ── */
+.product-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(106, 13, 173, 0.5);
+  box-shadow: 0 12px 40px rgba(106,13,173,0.2), 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Image wrap */
+.card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--surface-2);
+}
+
+.card-image-wrap img {
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.product-card:hover .card-image-wrap img {
+  transform: scale(1.06);
+}
+
+/* Badge */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 50px;
+  z-index: 2;
+  box-shadow: 0 2px 12px var(--purple-glow);
+}
+
+.card-badge.new {
+  background: #1a9e6e;
+  box-shadow: 0 2px 12px rgba(26,158,110,0.4);
+}
+
+/* Card body */
+.card-body {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #c084fc;
+  font-family: 'Syne', sans-serif;
+}
+
+/* CTA Button */
+.btn-buy {
+  display: block;
+  margin-top: auto;
+  background: var(--purple);
+  color: #fff;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.btn-buy:hover {
+  background: var(--purple-light);
+  box-shadow: 0 4px 20px var(--purple-glow);
+  transform: translateY(-1px);
+}
+
+.btn-buy:active {
+  transform: translateY(0);
+}
+
+/* Hidden card state */
+.product-card.hidden {
+  display: none;
+}
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 32px 24px 48px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 2;
+}
+
+.site-footer strong {
+  color: var(--text);
+}
+
+.footer-note {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  max-width: 360px;
+  margin: 4px auto 0;
+}
+
+/* ── Scrollbar styling (desktop) ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--purple); }
