@@ -13,24 +13,37 @@
 
   <!-- ░░ HEADER PROFIL ░░ -->
   <header class="profile-header">
-    <div class="profile-glow"></div>
-    <div class="profile-avatar-wrap">
-      <img
-        class="profile-avatar"
-        src="https://api.dicebear.com/9.x/shapes/svg?seed=KepinganBarang&backgroundColor=6A0DAD&shapeColor=ffffff"
-        alt="Avatar KepinganBarang"
-      />
+    <div class="profile-bg">
+      <img src="images/background_header.jpg" alt="Background" />
+      <div class="profile-bg-overlay"></div>
     </div>
-    <h1 class="profile-name">h. <span>Outfit</span></h1>
-    <p class="profile-bio">Kurasi produk terbaik dari Shopee — dipilih dengan teliti, harga yang masuk akal.</p>
-    <div class="profile-stats">
-      <div class="stat"><span class="stat-num">48</span><span class="stat-label">Produk</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="stat-num">12</span><span class="stat-label">Kategori</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+    <div class="profile-content">
+      <div class="profile-avatar-wrap">
+        <img
+          class="profile-avatar"
+          src="images/fotoprofil.jpg"
+          alt="Avatar KepinganBarang"
+        />
+      </div>
+      <h1 class="profile-name">Kepingan<span>Barang</span></h1>
+      <p class="profile-bio">Kurasi produk terbaik dari Shopee — dipilih dengan teliti, harga yang masuk akal.</p>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-num">48</span><span class="stat-label">Produk</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">Kategori</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating</span></div>
+      </div>
     </div>
   </header>
+
+  <!-- ░░ SEARCH BAR ░░ -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Cari produk..." />
+    </div>
+  </div>
 
   <!-- ░░ NAVIGASI KATEGORI ░░ -->
   <nav class="category-nav" role="navigation" aria-label="Filter kategori">
@@ -56,7 +69,7 @@
           <span class="card-badge">Terlaris</span>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Kaos Pocket Saku Pria</h3>
+          <h3 class="card-title">Headphone Wireless Pro X1</h3>
           <p class="card-price">Rp 299.000</p>
           <a href="https://s.shopee.co.id/7AZ7tDDFvm" class="btn-buy" target="_blank" rel="noopener">Beli Sekarang →</a>
         </div>
@@ -65,13 +78,13 @@
       <!-- PRODUK 2 -->
       <article class="product-card" data-category="fashion">
         <div class="card-image-wrap">
-          <img src="images/produk2.jpg" alt="Tas Baru" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Sepatu Sneaker" loading="lazy" />
           <span class="card-badge new">Baru</span>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Tas Baru</h3>
+          <h3 class="card-title">Sneaker Urban Street Edition</h3>
           <p class="card-price">Rp 459.000</p>
-          <a href="https://s.shopee.co.id/LinsxPeKX" class="btn-buy" target="_blank" rel="noopener">Beli Sekarang →</a>
+          <a href="#" class="btn-buy" target="_blank" rel="noopener">Beli Sekarang →</a>
         </div>
       </article>
 
@@ -199,24 +212,9 @@
         </div>
       </article>
 
-      <!-- PRODUK 13 -->
-      <article class="product-card" data-category="fashion">
-        <div class="card-image-wrap">
-          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Jaket" loading="lazy" />
-          <span class="card-badge">Diskon</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Jaket Bomber Unisex Waterproof</h3>
-          <p class="card-price">Rp 300.000</p>
-          <a href="#" class="btn-buy" target="_blank" rel="noopener">Beli Sekarang →</a>
-        </div>
-      </article>
-
-
     </div><!-- /product-grid -->
   </main>
-  
-      
+
   <!-- ░░ FOOTER ░░ -->
   <footer class="site-footer">
     <p>© 2025 <strong>KepinganBarang</strong> · Shopee Affiliate</p>

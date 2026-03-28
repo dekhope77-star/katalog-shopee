@@ -1,24 +1,30 @@
 /* ============================================================
-   KepinganBarang — Category Filter Script
+   KepinganBarang — Category Filter + Search Script
    ============================================================ */
 
 (function () {
-  const catBtns   = document.querySelectorAll('.cat-btn');
-  const cards     = document.querySelectorAll('.product-card');
-  const countEl   = document.getElementById('count-display');
+  const catBtns     = document.querySelectorAll('.cat-btn');
+  const cards       = document.querySelectorAll('.product-card');
+  const countEl     = document.getElementById('count-display');
+  const searchInput = document.getElementById('search-input');
 
-  function filterProducts(category) {
+  let activeCategory = 'semua';
+
+  function filterProducts() {
+    const keyword = searchInput ? searchInput.value.toLowerCase().trim() : '';
     let visible = 0;
 
     cards.forEach((card, i) => {
-      const match = category === 'semua' || card.dataset.category === category;
+      const categoryMatch = activeCategory === 'semua' || card.dataset.category === activeCategory;
+      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+      const searchMatch = keyword === '' || title.includes(keyword);
+      const show = categoryMatch && searchMatch;
 
-      if (match) {
+      if (show) {
         card.classList.remove('hidden');
-        // staggered re-entry animation
         card.style.animationDelay = `${i * 0.05}s`;
         card.style.animation = 'none';
-        void card.offsetWidth; // reflow trick
+        void card.offsetWidth;
         card.style.animation = '';
         visible++;
       } else {
@@ -33,10 +39,14 @@
     btn.addEventListener('click', () => {
       catBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      filterProducts(btn.dataset.category);
+      activeCategory = btn.dataset.category;
+      filterProducts();
     });
   });
 
-  // Initial count
-  filterProducts('semua');
+  if (searchInput) {
+    searchInput.addEventListener('input', filterProducts);
+  }
+
+  filterProducts();
 })();
