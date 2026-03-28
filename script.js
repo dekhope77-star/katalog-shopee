@@ -16,7 +16,7 @@
 
     cards.forEach((card, i) => {
       const categoryMatch = activeCategory === 'semua' || card.dataset.category === activeCategory;
-      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+      const title = card.querySelector('.card-price')?.textContent.toLowerCase() || '';
       const searchMatch = keyword === '' || title.includes(keyword);
       const show = categoryMatch && searchMatch;
 
